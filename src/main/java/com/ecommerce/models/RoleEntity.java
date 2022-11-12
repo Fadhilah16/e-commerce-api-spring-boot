@@ -11,8 +11,15 @@ import javax.persistence.Table;
 
 import com.ecommerce.models.enums.RoleTypes;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name = "roles")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class RoleEntity {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,22 +27,5 @@ public class RoleEntity {
 	@Enumerated(EnumType.STRING)
 	@Column(length = 20)
 	private RoleTypes name;
-	
-	public RoleEntity() {
-	}
-	public RoleEntity(RoleTypes name) {
-		this.name = name;
-	}
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public RoleTypes getName() {
-		return name;
-	}
-	public void setName(RoleTypes name) {
-		this.name = name;
-	}
+
 }

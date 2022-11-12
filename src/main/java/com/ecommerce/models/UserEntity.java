@@ -25,18 +25,32 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+
 @Entity
 @Table(name = "users")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@RequiredArgsConstructor
 public class UserEntity implements Serializable {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
 	@NotBlank
 	@Size(max = 20)
+    @NonNull
 	private String username;
+
 	@NotBlank
 	@Size(max = 120)
     @JsonIgnore
+    @NonNull
 	private String password;
     
 	@ManyToMany(fetch = FetchType.LAZY)
@@ -54,48 +68,4 @@ public class UserEntity implements Serializable {
     @JsonIgnore
     private Date updateAt;
     
-	
-    public UserEntity() {
-	}
-	public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    public Set<RoleEntity> getRoles() {
-        return roles;
-    }
-    public void setRoles(Set<RoleEntity> roles) {
-        this.roles = roles;
-    }
-    public UserEntity(String username, String password) {
-		this.username = username;
-		this.password = password;
-	}
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-    public Date getUpdateAt() {
-        return updateAt;
-    }
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
-    }
 }

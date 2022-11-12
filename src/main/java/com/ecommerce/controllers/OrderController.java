@@ -25,17 +25,15 @@ import com.ecommerce.DTO.order.PaymentRequestDTO;
 import com.ecommerce.models.order.OrderEntity;
 import com.ecommerce.services.OrderService;
 
+import lombok.AllArgsConstructor;
+
 @RestController
 @RequestMapping("api/orders")
 @PreAuthorize("isAuthenticated()")
+@AllArgsConstructor
 public class OrderController {
     
     private OrderService orderService;
-    
-   
-    public OrderController(OrderService orderService) {
-        this.orderService = orderService;
-    }
 
     @PostMapping
     public ResponseEntity<ResponseDTO<List<OrderEntity>>> createOrder(HttpServletRequest request, @Valid @RequestBody OrderRequestDTO orderRequestDTO, Errors errors){

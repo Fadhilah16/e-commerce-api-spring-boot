@@ -21,26 +21,17 @@ import com.ecommerce.repository.cart.CartItemRepo;
 import com.ecommerce.repository.cart.CartRepo;
 import com.ecommerce.services.UserService.UserService;
 
+import lombok.AllArgsConstructor;
+
 @Service
 @Transactional
+@AllArgsConstructor
 public class CartService {
 
     private CartRepo cartRepo;
-
-    private CartItemRepo cartItemRepo;
-   
-    private ProductRepo productRepo;
-    
+    private CartItemRepo cartItemRepo;  
+    private ProductRepo productRepo;   
     private UserService userService;
-        
-   
-    public CartService(CartRepo cartRepo, CartItemRepo cartItemRepo, ProductRepo productRepo, UserService userService) {
-        this.cartRepo = cartRepo;
-        this.cartItemRepo = cartItemRepo;
-        this.productRepo = productRepo;
-        this.userService = userService;
-    }
-
 
 
     public CartResponseDTO addToCart(HttpServletRequest request, CartItemRequestDTO cartItemRequest){

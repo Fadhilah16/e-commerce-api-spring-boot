@@ -14,17 +14,13 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ecommerce.models.UserEntity;
 import com.ecommerce.repository.UserRepo;
 
+import lombok.AllArgsConstructor;
+
 @Service
 @Transactional
+@AllArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
     private UserRepo userRepo;
-
-    
-
-    public UserDetailsServiceImpl(UserRepo userRepo) {
-        this.userRepo = userRepo;
-    }
-
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

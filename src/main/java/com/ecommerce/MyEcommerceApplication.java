@@ -25,12 +25,12 @@ public class MyEcommerceApplication {
 			public void run(String... args) throws Exception {
 				if (roleRepo.findByName(RoleTypes.ROLE_ADMIN).isEmpty()) {
 
-					roleRepo.save(new RoleEntity(RoleTypes.ROLE_ADMIN));
+					roleRepo.save(new RoleEntity(null, RoleTypes.ROLE_ADMIN));
 				}
 
 				if (roleRepo.findByName(RoleTypes.ROLE_USER).isEmpty()){
 
-					roleRepo.save(new RoleEntity(RoleTypes.ROLE_USER));
+					roleRepo.save(new RoleEntity(null, RoleTypes.ROLE_USER));
 
 				}
 

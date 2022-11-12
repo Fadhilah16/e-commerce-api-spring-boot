@@ -22,8 +22,15 @@ import org.springframework.data.annotation.LastModifiedDate;
 import com.ecommerce.models.UserEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name="carts")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class CartEntity implements Serializable{
 
     @Id
@@ -49,98 +56,6 @@ public class CartEntity implements Serializable{
     @Column(name = "updated_at")
     @JsonIgnore
     private Date updateAt;
-
-    
-
-    public CartEntity() {
-    }
-
-
-
-    public Long getId() {
-        return id;
-    }
-
-
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-
-
-    public UserEntity getUser() {
-        return user;
-    }
-
-
-
-    public void setUser(UserEntity user) {
-        this.user = user;
-    }
-
-
-
-    public Double getTotalItem() {
-        return totalItem;
-    }
-
-
-
-    public void setTotalItem(Double totalItem) {
-        this.totalItem = totalItem;
-    }
-
-
-
-    public Double getTotalQuantity() {
-        return totalQuantity;
-    }
-
-
-
-    public void setTotalQuantity(Double totalQuantity) {
-        this.totalQuantity = totalQuantity;
-    }
-
-
-
-    public BigDecimal getTotalPrice() {
-        return totalPrice;
-    }
-
-
-
-    public void setTotalPrice(BigDecimal totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-
-
-    public Date getUpdateAt() {
-        return updateAt;
-    }
-
-
-
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
-    }
-
-    
-
     
     
 }

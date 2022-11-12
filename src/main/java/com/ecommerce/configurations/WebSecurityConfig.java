@@ -25,13 +25,6 @@ public class WebSecurityConfig {
 	private UserDetailsServiceImpl userDetailsServiceImpl;
 	private AuthEntryPointJwt authEntryPointJwt;
 	
-
-    public WebSecurityConfig(JwtUtils jwtUtils, UserDetailsServiceImpl userDetailsServiceImpl, AuthEntryPointJwt authEntryPointJwt) {
-		this.jwtUtils = jwtUtils;
-		this.userDetailsServiceImpl = userDetailsServiceImpl;
-		this.authEntryPointJwt = authEntryPointJwt;
-	}
-
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 

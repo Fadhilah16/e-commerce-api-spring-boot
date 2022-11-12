@@ -25,18 +25,17 @@ import com.ecommerce.models.cart.CartEntity;
 import com.ecommerce.models.cart.CartItemEntity;
 import com.ecommerce.services.CartService;
 
+import lombok.AllArgsConstructor;
+
 
 @RestController
 @RequestMapping("api/cart")
 @PreAuthorize("isAuthenticated()")
+@AllArgsConstructor
 public class CartController {
 
     private CartService cartService;
 
-  
-    public CartController(CartService cartService) {
-        this.cartService = cartService;
-    }
 
     @PostMapping
     public ResponseEntity<ResponseDTO<CartResponseDTO>> addToCart(HttpServletRequest request, @Valid @RequestBody CartItemRequestDTO cartItemRequestDTO, Errors errors){
@@ -64,7 +63,7 @@ public class CartController {
         return cartService.findCart(request);
     }
     
-    @GetMapping("items/{id}")
+    @GetMapping("/items/{id}")
     public ResponseDTO<CartItemEntity> findOneItem(HttpServletRequest request, @PathVariable("id") long cartItemId){
         ResponseDTO<CartItemEntity> response = new ResponseDTO<>();
         try{
@@ -80,7 +79,7 @@ public class CartController {
          return response;
     }
 
-    @DeleteMapping("items/{id}")
+    @DeleteMapping("/items/{id}")
     public CartEntity deleteCartItem(HttpServletRequest request, @PathVariable("id") long id){
         return cartService.deleteCartItemById(request, id);
     }

@@ -16,19 +16,15 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.ecommerce.services.UserService.UserDetailsServiceImpl;
 
+import lombok.AllArgsConstructor;
+
 @Component
+@AllArgsConstructor
 public class AuthTokenFilter extends OncePerRequestFilter {
   
-    private JwtUtils jwtUtils;
-   
+    private JwtUtils jwtUtils;  
     private UserDetailsServiceImpl userDetailsServiceImpl;
 
-    
-
-    public AuthTokenFilter(JwtUtils jwtUtils, UserDetailsServiceImpl userDetailsServiceImpl) {
-        this.jwtUtils = jwtUtils;
-        this.userDetailsServiceImpl = userDetailsServiceImpl;
-    }
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {

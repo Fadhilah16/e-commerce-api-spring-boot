@@ -5,7 +5,8 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,17 +16,16 @@ import com.ecommerce.repository.ProductRepo;
 import com.ecommerce.repository.UserRepo;
 import com.ecommerce.security.JwtUtils;
 
+import lombok.AllArgsConstructor;
+
 
 @Service
 @Transactional
+@AllArgsConstructor
 public class ProductService {
-    @Autowired
+  
     private ProductRepo productRepo;
-
-    @Autowired
     private JwtUtils jwtUtils;
-
-    @Autowired
     private UserRepo userRepo;
 
     public ProductEntity createProduct(ProductEntity product, HttpServletRequest request){
@@ -46,6 +46,10 @@ public class ProductService {
 
     public Iterable<ProductEntity> findAllProduct(){
         return productRepo.findAll();
+    }
+
+    public Page<ProductEntity> findAllProduct(Pageable pageable){
+        return productRepo.findAll(pageable);
     }
 
     public ProductEntity findProductById(long id){

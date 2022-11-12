@@ -28,33 +28,20 @@ import com.ecommerce.repository.order.OrderItemRepo;
 import com.ecommerce.repository.order.OrderRepo;
 import com.ecommerce.services.UserService.UserService;
 
+import lombok.AllArgsConstructor;
+
 @Service
 @Transactional
+@AllArgsConstructor
 public class OrderService {
 
     private OrderRepo orderRepo;
-
     private OrderItemRepo orderItemRepo;
-
-    private UserService userService;
-  
-    private CartItemRepo cartItemRepo;
-   
+    private UserService userService; 
+    private CartItemRepo cartItemRepo;  
     private CartRepo cartRepo;
-
     private ProductRepo productRepo;
    
-    public OrderService(OrderRepo orderRepo, OrderItemRepo orderItemRepo, UserService userService, CartItemRepo cartItemRepo, CartRepo cartRepo, ProductRepo productRepo) {
-        this.orderRepo = orderRepo;
-        this.orderItemRepo = orderItemRepo;
-        this.userService = userService;
-        this.cartItemRepo = cartItemRepo;
-        this.cartRepo = cartRepo;
-        this.productRepo = productRepo;
-    }
-
-
-
     public List<OrderEntity> createOrder(HttpServletRequest request, OrderRequestDTO orderRequestDTO  ){
         UserEntity user = userService.findUserByJwtUsername(request).get();
         CartEntity cart = cartRepo.findByUser(user).get();

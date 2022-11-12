@@ -12,14 +12,21 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
- 
+
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity  
 @Table(name="products")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProductEntity implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,87 +60,5 @@ public class ProductEntity implements Serializable{
      @JsonIgnore
      private Date updateAt;
 
-   
-
-
-    public ProductEntity() {
-    }
-
-
-
-    public Long getId() {
-        return id;
-    }
-
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-
-    public String getName() {
-        return name;
-    }
-
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-    public String getDescription() {
-        return description;
-    }
-
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public Double getStock() {
-        return stock;
-    }
-
-    public void setStock(Double stock) {
-        this.stock = stock;
-    }
-
-    public UserEntity getUser() {
-        return user;
-    }
-
-
-    public void setUser(UserEntity user) {
-        this.user = user;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-
-    public Date getUpdateAt() {
-        return updateAt;
-    }
-
-
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
-    }
  
 }

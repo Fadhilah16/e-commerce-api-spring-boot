@@ -22,22 +22,16 @@ import com.ecommerce.models.UserEntity;
 import com.ecommerce.services.CartService;
 import com.ecommerce.services.UserService.UserService;
 
+import lombok.AllArgsConstructor;
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
+@AllArgsConstructor
 public class AuthController {
     private PasswordEncoder passwordEncoder;
 	private UserService userService;
     private CartService cartService;
-
-
-   
-
-	public AuthController(PasswordEncoder passwordEncoder, UserService userService, CartService cartService) {
-		this.passwordEncoder = passwordEncoder;
-		this.userService = userService;
-		this.cartService = cartService;
-	}
 
 	@PostMapping("/signin")
 	public ResponseEntity<?> signIn(@Valid @RequestBody LoginRequestDTO loginRequest, Errors errors) {

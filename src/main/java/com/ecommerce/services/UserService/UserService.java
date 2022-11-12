@@ -28,8 +28,11 @@ import com.ecommerce.repository.UserRepo;
 import com.ecommerce.repository.cart.CartRepo;
 import com.ecommerce.security.JwtUtils;
 
+import lombok.AllArgsConstructor;
+
 
 @Service
+@AllArgsConstructor
 public class UserService {
 
     private UserRepo userRepo;
@@ -38,16 +41,6 @@ public class UserService {
     private JwtUtils jwtUtils;
 	private CartRepo cartRepo;
     
-    
-    public UserService(UserRepo userRepo, RoleRepo roleRepo, AuthenticationManager authenticationManager,
-            JwtUtils jwtUtils, CartRepo cartRepo) {
-        this.userRepo = userRepo;
-        this.roleRepo = roleRepo;
-        this.authenticationManager = authenticationManager;
-        this.jwtUtils = jwtUtils;
-		this.cartRepo = cartRepo;
-    }
-
     public UserEntity create(UserEntity user, RegisterRequestDTO registerRequest ){
         Set<String> strRoles = registerRequest.getRoles();
 		Set<RoleEntity> roles = new HashSet<>();
